@@ -1,0 +1,10 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<p>Hola usuario</p>
+<p>${user.email}</p>
+<p>${user.name}</p>
+<p>${user.created}</p>
+<p>${user.updated}</p>
+
+<p><a href="@{Users.edit()}">Editar</a> mi informacion</p>

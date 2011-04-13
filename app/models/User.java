@@ -4,6 +4,8 @@ import siena.*;
 import java.util.Date;
 
 public class User extends Model {
+    @Unique("email")
+
     @Id
     public Long id;
 

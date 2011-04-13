@@ -2,10 +2,10 @@
 #{set title:'Home' /}
 
 #{form @Users.update()}
-    <input type="hidden" name="id" id="id" value="${user.id}" />
+    <input type="hidden" name="id" id="id" value="${user?.id}" />
     <p>
         <label>Nombre</label>
-        <input type="text" name="name" id="name" value="${user.name}" />
+        <input type="text" name="name" id="name" value="${user?.name}" />
     </p>
     <p>
         <input type="submit" value="Guardar" />

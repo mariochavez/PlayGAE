@@ -5,6 +5,9 @@
 # Home page
 GET     /                                       Application.index
 
+GET     /logout                                 Application.logout
+GET     /login                                  Application.login
+
 GET     /users                                  Users.index
 GET     /users/edit                             Users.edit
 PUT     /users/update                           Users.update

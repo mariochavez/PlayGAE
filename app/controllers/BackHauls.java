@@ -49,6 +49,37 @@ public class BackHauls extends Application {
 
         backhaul.insert();
 
+        flash.put("notice", "La oferta fue creada");
+        Application.index();
+    }
+
+
+    public static void update(Long id, @Required String origin, @Required String destination, @Required String contact, @InFuture() Date originDate, @Min(1) double cargoArea, @Min(1) double costByArea, @Min(1) double costByWeight) {
+        BackHaul backhaul = BackHaul.findById(id);
+
+        if(backhaul == null) {
+            flash.put("error", "No existe el registro");
+            Application.index();
+            return;
+        }
+
+        backhaul.origin = origin;
+        backhaul.destination = destination;
+        backhaul.contact = contact;
+        backhaul.originDate = originDate;
+        backhaul.cargoArea = cargoArea;
+        backhaul.costByArea = costByArea;
+        backhaul.costByWeight = costByWeight;
+
+        if(validation.hasErrors()) {
+            flash.put("error", "Tenemos errores");
+            render("BackHauls/edit.html", backhaul);
+            return;
+        }
+
+        backhaul.update();
+
+        flash.put("notice", "La oferta fue actualizada");
         Application.index();
     }
 }

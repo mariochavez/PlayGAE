@@ -16,6 +16,7 @@ PUT     /users/update                           Users.update
 GET     /backhauls/new                          BackHauls.newBackHaul
 POST    /backhauls/create                       BackHauls.create
 GET     /backhauls/{id}/edit                    BackHauls.edit
+PUT     /backhauls/update                       BackHauls.update
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
 

@@ -2,6 +2,7 @@
 #{set title:'Home' /}
 
 <p>${flash.get("error")}</p>
+<p>${flash.get("notice")}</p>
 <a href="@{BackHauls.newBackHaul()}">Nuevo</a>
 #{if backHauls.size() > 0}
     <table>

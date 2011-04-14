@@ -1,0 +1,10 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<h1>Modificar oferta de Back Haul</h1>
+
+<p>${flash.get("error")}</p>
+#{form @BackHauls.update()}
+    <input type="hidden" name="id" id="id" value="${backhaul.id}" />
+    #{include 'BackHauls/_form.html' /}
+#{/form}

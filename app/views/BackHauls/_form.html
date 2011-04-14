@@ -1,0 +1,38 @@
+    <p>
+        <label>Origen</label>
+        <input type="text" name="origin" id="origin" value="${backhaul?.origin}" />
+        <span>#{error 'origin' /}</span>
+    </p>
+    <p>
+        <label>Destino</label>
+        <input type="text" name="destination" id="destination" value="${backhaul?.destination}" />
+        <span>#{error 'destination' /}</span>
+    </p>
+    <p>
+        <label>Contacto</label>
+        <input type="text" name="contact" id="contact" value="${backhaul?.contact}" />
+        <span>#{error 'contact' /}</span>
+    </p>
+    <p>
+        <label>Fecha</label>
+        <input type="text" name="originDate" id="originDate" value="${backhaul?.originDate.format()}" />
+        <span>#{error 'originDate' /}</span>
+    </p>
+    <p>
+        <label>Area</label>
+        <input type="text" name="cargoArea" id="cargoArea" value="${backhaul?.cargoArea}" />
+        <span>#{error 'cargoArea' /}</span>
+    </p>
+    <p>
+        <label>Costo por area</label>
+        <input type="text" name="costByArea" id="costByArea" value="${backhaul?.costByArea}" />
+        <span>#{error 'costByArea' /}</span>
+    </p>
+    <p>
+        <label>Costo por peso</label>
+        <input type="text" name="costByWeight" id="costByWeight" value="${backhaul?.costByWeight}" />
+        <span>#{error 'costByWeight' /}</span>
+    </p>
+    <p>
+        <input type="submit" name="Guardar" />
+    </p>

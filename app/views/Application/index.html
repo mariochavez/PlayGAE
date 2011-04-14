@@ -1,4 +1,28 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<p>Ir a <a href="@{Users.index()}">usuarios</a></p>
+<p>${flash.get("error")}</p>
+<a href="@{BackHauls.newBackHaul()}">Nuevo</a>
+#{if backHauls.size() > 0}
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>Origen</td>
+            <td>Destino</td>
+            <td>Fecha</td>
+            <td>Contacto</td>
+        </tr>
+    #{list items:backHauls, as: 'backHaul'}
+        <tr>
+            <td><a href="@{BackHauls.edit(backHaul.id)}">${backHaul.id}</a></td>
+            <td>${backHaul.origin}</td>
+            <td>${backHaul.destination}</td>
+            <td>${backHaul.originDate.format()}</td>
+            <td>${backHaul.contact}</td>
+        </tr>
+    #{/list}
+    </table>
+#{/if}
+#{else}
+    <h3>No hay backhauls</h3>
+#{/else}

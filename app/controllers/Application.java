@@ -19,7 +19,10 @@ public class Application extends Controller {
                 return;
             }
         }
-        render();
+
+        List<BackHaul> backHauls = BackHaul.findByDate(new Date());
+
+        render(backHauls);
     }
 
     public static void login() {

@@ -15,7 +15,8 @@ public class BackHauls extends Application {
         if(Authentication.getUser() == null) {
             Application.login();
         } else {
-            renderArgs.put("user", Authentication.getEmail());
+            User user = User.findByEmail(Authentication.getEmail());
+            renderArgs.put("user", user.name);
         }
     }
 
@@ -28,6 +29,15 @@ public class BackHauls extends Application {
 
     public static void edit(Long id) {
         BackHaul backhaul = BackHaul.findById(id);
+        User user = User.findByEmail(Authentication.getEmail());
+
+        if(!backhaul.user.id.equals(user.id))
+        {
+            flash.put("error", "Usted no puede modificar este registro");
+            Application.index();
+            return;
+        }
+
         if(backhaul == null) {
             flash.put("error", "No existe el registro");
             Application.index();
@@ -39,7 +49,8 @@ public class BackHauls extends Application {
 
     public static void create(@Required String origin, @Required String destination, @Required String contact, @InFuture() Date originDate, @Min(1) double cargoArea, @Min(1) double costByArea, @Min(1) double costByWeight) {
 
-        BackHaul backhaul = new BackHaul(origin, destination, contact, originDate, cargoArea, costByArea, costByWeight);
+        User user = User.findByEmail(Authentication.getEmail());
+        BackHaul backhaul = new BackHaul(origin, destination, contact, originDate, cargoArea, costByArea, costByWeight, user);
 
         if(validation.hasErrors()) {
             flash.put("error", "Tenemos errores");

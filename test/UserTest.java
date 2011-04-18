@@ -40,4 +40,14 @@ public class UserTest extends UnitTest {
         
         user1.delete();
     }
+
+    @Test
+    public void cleanBackhaulsWithoutUser() {
+        List<BackHaul> backHauls = BackHaul.findByDate(new Date());
+        for (BackHaul b : backHauls) {
+            if(b.user == null) {
+                b.delete();
+            }
+        }
+    }
 }

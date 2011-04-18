@@ -3,7 +3,7 @@ package controllers;
 import models.*;
 import play.*;
 import play.mvc.*;
-import java.util.Date;
+import java.util.*;
 
 import play.Logger;
 
@@ -14,14 +14,16 @@ public class Users extends Application {
         if(Authentication.getUser() == null) {
             Application.login();
         } else {
-            renderArgs.put("user", Authentication.getEmail());
+            User user = User.findByEmail(Authentication.getEmail());
+            renderArgs.put("user", user.name);
         }
     }
     
     public static void index() {
         User user = User.findByEmail(Authentication.getEmail());
+        List<BackHaul> userBackHauls = user.backHauls.fetch();
 
-        render(user);
+        render(user, userBackHauls);
     }
 
     public static void edit() {

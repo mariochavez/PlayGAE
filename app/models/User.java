@@ -6,7 +6,7 @@ import java.util.Date;
 public class User extends Model {
     @Unique("email")
 
-    @Id
+    @Id(Generator.AUTO_INCREMENT)
     public Long id;
 
     @NotNull
@@ -15,6 +15,9 @@ public class User extends Model {
 
     public Date created;
     public Date updated;
+
+    @Filter("user")
+    public Query<BackHaul> backHauls;
 
     public User() {
         super();

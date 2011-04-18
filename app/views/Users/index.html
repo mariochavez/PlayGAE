@@ -8,3 +8,29 @@
 <p>${user?.updated}</p>
 
 <p><a href="@{Users.edit()}">Editar</a> mi informacion</p>
+
+<div>
+#{if userBackHauls.size() > 0}
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>Origen</td>
+            <td>Destino</td>
+            <td>Fecha</td>
+            <td>Contacto</td>
+        </tr>
+    #{list items:userBackHauls, as: 'backHaul'}
+        <tr>
+            <td><a href="@{BackHauls.edit(backHaul.id)}">${backHaul.id}</a></td>
+            <td>${backHaul.origin}</td>
+            <td>${backHaul.destination}</td>
+            <td>${backHaul.originDate.format()}</td>
+            <td>${backHaul.contact}</td>
+        </tr>
+    #{/list}
+    </table>
+#{/if}
+#{else}
+    <h3>No hay backhauls</h3>
+#{/else}
+</div>

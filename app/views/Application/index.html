@@ -12,6 +12,7 @@
             <td>Destino</td>
             <td>Fecha</td>
             <td>Contacto</td>
+            <td>Mail</td>
         </tr>
     #{list items:backHauls, as: 'backHaul'}
         <tr>
@@ -20,6 +21,7 @@
             <td>${backHaul.destination}</td>
             <td>${backHaul.originDate.format()}</td>
             <td>${backHaul.contact}</td>
+            <td>${backHaul.user?.email}</td>
         </tr>
     #{/list}
     </table>

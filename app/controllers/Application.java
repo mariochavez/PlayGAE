@@ -19,8 +19,17 @@ public class Application extends Controller {
                 return;
             }
         }
+        if (Authentication.isLoggedIn()) {
+            User user = User.findByEmail(Authentication.getEmail());
+            renderArgs.put("user", user.name);
+        }
 
         List<BackHaul> backHauls = BackHaul.findByDate(new Date());
+        for(BackHaul b : backHauls) {
+            if (b.user != null) {
+                b.user.get();
+            }
+        }
 
         render(backHauls);
     }
